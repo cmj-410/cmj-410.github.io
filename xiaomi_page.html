@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./icon_font/iconfont.css">
+    <link rel="shortcut icon" href="./logo/milogo.ico">
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .topbar {
+            position: relative;
+            background-color: #333;
+            height: 40px;
+        }
+
+        .topbar_container {
+            position: absolute;
+            background-color: #333;
+            width: 1226px;
+            left: 50%;
+            margin-left: -613px;
+        }
+
+        /* 居左的顶端导航条的文本 */
+        .topbar_txt {
+            float: left;
+            font-size: 12px;
+            color: #b0b0b0;
+            height: 40px;
+            text-decoration: none;
+            line-height: 40px;
+        }
+
+        /* 用于分离文本的竖杠 */
+        .sep {
+            float: left;
+            font-size: 12px;
+            height: 16px;
+            color: #424242;
+            margin: 0 3.6px;
+            line-height: 40px;
+
+        }
+
+        /* 顶端导航条的购物车部分 */
+        .topbar_txt_rightcar {
+            position: relative;
+            float: right;
+            font-size: 12px;
+            color: #b0b0b0;
+            background-color: #424242;
+            height: 40px;
+            text-decoration: none;
+            line-height: 40px;
+        }
+
+        .buycar {
+            margin: 0px 16px;
+        }
+
+
+        .topbar_txt_rightcar:hover{
+            color: #FF6700;
+            background-color: #fff;
+            border-bottom: none;   
+        }
+
+
+        /* 鼠标悬浮在购物车下方的显示的购物车内容 */
+        .topbar_txt_rightcar .gouwuche_specific{
+            display: none; 
+            position: absolute;
+            top:40px;
+            right: 0px;
+            width: 320px;
+            height: 100px;
+            background-color: #ff1;
+            box-shadow: 0px 0px 10px #000;
+        }
+
+        .topbar_txt_rightcar:hover .gouwuche_specific{
+            display: block;    
+            z-index: 3;        
+        }
+
+
+        /* 顶部导航条右边的链接之间的间隔 */
+        .sep_right {
+            float: right;
+            height: 40px;
+            width: 10px;
+            line-height: 40px;
+            text-align: center;
+            color: #424242;
+        }
+
+
+        /* 顶部导航条右边的文本*/
+        .topbar_txt_right {
+            float: right;
+            font-size: 12px;
+            color: #b0b0b0;
+            height: 40px;
+            text-decoration: none;
+            line-height: 40px;
+        }
+
+        .daohangtiao_text:hover {
+            color: white;
+        }
+
+        /* 导航头部 */
+        .header {
+            position: relative;
+            height: 100px;
+            color: #333;
+            font: 14px;
+        }
+
+
+        /* 导航头部的中央部分 */
+        .header_container {
+            position: absolute;
+            height: 100px;
+            width: 1226px;
+            left: 50%;
+            margin-left: -613px;
+        }
+
+        .header_left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 234px;
+            height: 100px;
+        }
+
+
+        .header_left .biglogo {
+            position: absolute;
+            left: 0;
+            top: 22px;
+            width: 56px;
+            height: 56px;
+        }
+
+
+        .header_right {
+            position: absolute;
+            top: 0;
+            left: 234px;
+            width: 992px;
+            height: 100px;
+        }
+
+        /* header 中间的链接 */
+        .header_right .link {
+            float: left;
+            position: relative;
+            padding: 39px 10px;
+        }
+
+
+        .header_right .link .txt {
+            color: #333;
+            height: 22px;
+            font-size: 16px;
+        }
+
+
+        .header_sousuo {
+            float: right;
+            height: 50px;
+            width: 50px;
+            margin: 25px 0;
+            text-decoration: none;
+            border: 1px solid #e0e0e0;
+        }
+
+
+        .header_sousuo .icon_sousuo {
+            font-size: 32px;
+            margin: 9px;
+        }
+
+        /* header右边的搜索框 */
+        .sousuokuang {
+            float: right;
+            margin: 25px 0;
+            width: 245px;
+            height: 52px;
+            padding: 0 10px;
+            border: 1px solid #e0e0e0;
+            border-right: none;
+        }
+
+        .sousuokuang_text {
+            position: absolute;
+            right: 260px;
+            top: 50%;
+            margin-top: -7px;
+            font-size: 14px;
+        }
+
+
+
+        /* 中央部分，缓慢加载各类展示图片 */
+        .lazyloader {
+            position: relative;
+            height: 460px;
+            margin: 0 134.5px;
+        }
+
+        /* 中央部分的容器 */
+        .lazyloader_container {
+            position: absolute;
+            left: 50%;
+            margin-left: -613px;
+            width: 1226px;
+        }
+
+        /* 中央部分的左侧，选择商品类别区域 */
+        .category_list {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 234px;
+            height: 420px;
+            padding: 20px 0;
+            z-index: 2;
+            background-color: rgb(105, 101, 101);
+        }
+
+        /* 商品类别框中的子项 */
+        .category_list_title {
+            position: relative;
+            display: block;
+            width: 204px;
+            height: 42px;
+            padding: 0 0 0 30px;
+            color: #fff;
+            text-decoration: none;
+            line-height: 42px;
+        }
+
+        /* 商品类别框中的子项 的 箭头右边距 */
+        .jiantou_youbianju {
+            position: absolute;
+            right: 25px;
+        }
+
+
+        .category_list_title:hover {
+            background-color: rgb(255, 103, 0);
+        }
+
+        /* 显示轮播图的大区域（包括左边的类别选项区） */
+        /* 这里直接设置块元素大小即可，左边的类别选项已经设置为绝对定位，脱离了标准范围 */
+        .category_list_rightshow {
+            position: relative;
+            z-index: 1;
+            width: 1226px;
+            height: 460px;
+        }
+
+        /* 轮播图（重新调整原始图片大小） */
+        .category_list_rightshow .lunbotu {
+            position: relative;
+            background-image: url(./picture/pic1.jpg);
+            background-size: 100%;
+            width: 1226px;
+            height: 460px;
+        }
+
+
+        /* 切换轮播图的箭头（公共属性） */
+        .category_list_rightshow .lunbotu .lunbotuarrow {
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            margin-top: -35px;
+            left: 234px;
+            width: 40px;
+            height: 70px;
+            background-color: red;
+        }
+
+        /* 左边的第一个箭头 */
+        /* .lunbotuarrow:first-child{
+            margin-left: 234px;
+        } */
+
+        /* 右边的箭头（最后一个） */
+        /* .lunbotuarrow:last-child{
+            margin-right: 20px;
+        } */
+
+        /* 右边固定位置的工具条 */
+        .toolbar {
+            position: fixed;
+            width: 27px;
+            height: 150px;
+            right: 0;
+            bottom: 40px;
+            padding-top: 10px;
+            bottom: 5%;
+            background-color: #b0b0b0;
+        }
+
+        .toolbar_item {
+            position: relative;
+            width: 20px;
+            height: 30px;
+        }
+
+        .juzhong {
+            position: absolute;
+            left: 5.5px;
+        }
+    </style>
+    <title>小米商城</title>
+</head>
+
+<body>
+    <div class="toolbar">
+        <div class="toolbar_item">
+            <span class="juzhong iconfont icon-shouji"></span>
+        </div>
+        <div class="toolbar_item">
+            <span class="juzhong iconfont icon-gerenzhongxin"></span>
+        </div>
+        <div class="toolbar_item">
+            <span class="juzhong iconfont icon-editor2"></span>
+        </div>
+        <div class="toolbar_item">
+            <span class="juzhong iconfont icon-kefu"></span>
+        </div>
+        <div class="toolbar_item">
+            <span class="juzhong iconfont icon-gouwuche"></span>
+        </div>
+    </div>
+    <div class="topbar">
+        <div class="topbar_container">
+            <a class="topbar_txt daohangtiao_text" href="#">小米商城</a>
+            <span class="sep">|</span>
+            <a class="topbar_txt daohangtiao_text" href="#">MIUI</a>
+            <span class="sep">|</span>
+            <a class="topbar_txt daohangtiao_text" href="#">IOT</a>
+            <span class="sep">|</span>
+            <a class="topbar_txt daohangtiao_text" href="#">云服务</a>
+            <span class="sep">|</span>
+            <a class="topbar_txt daohangtiao_text" href="#">天星数科</a>
+            <span class="sep">|</span>
+            <a class="topbar_txt daohangtiao_text" href="#">有品</a>
+            <span class="sep">|</span>
+            <a class="topbar_txt daohangtiao_text" href="#">小爱开放平台</a>
+            <span class="sep">|</span>
+            <a class="topbar_txt daohangtiao_text" href="#">企业团购</a>
+            <span class="sep">|</span>
+            <a class="topbar_txt daohangtiao_text" href="#">资质证照</a>
+            <span class="sep">|</span>
+            <a class="topbar_txt daohangtiao_text" href="#">协议规则</a>
+            <span class="sep">|</span>
+            <a class="topbar_txt daohangtiao_text" href="#">下载app</a>
+            <span class="sep">|</span>
+            <a class="topbar_txt daohangtiao_text" href="#">智能生活</a>
+            <span class="sep">|</span>
+            <a class="topbar_txt daohangtiao_text" href="#">Select Location</a>
+            <a class="topbar_txt_rightcar" href="#">
+                <span class="buycar iconfont icon-gouwuche2">
+                    <span style="font-size: 12px;">购物车 (0)</span> </span>
+                <div class="gouwuche_specific">购物车中还没有商品，赶紧选购吧！
+                </div>
+            </a>
+            <span class="sep_right"></span>
+            <a class="topbar_txt_right daohangtiao_text" href="#">信息通知</a>
+            <span class="sep_right">|</span>
+            <a class="topbar_txt_right daohangtiao_text" href="#">注册</a>
+            <span class="sep_right">|</span>
+            <a class="topbar_txt_right daohangtiao_text" href="#">登录</a>
+
+        </div>
+    </div>
+    <div class="header">
+        <div class="header_container">
+            <div class="header_left">
+                <span class="biglogo">
+                    <img src="./logo/mi_logo.png" width="56px" height="56px" alt="mi_logo">
+                </span>
+            </div>
+            <div class="header_right">
+                <div class="link">
+                    <div class="txt">Xiaomi手机</div>
+                </div>
+                <div class="link">
+                    <div class="txt">Redmi红米</div>
+                </div>
+                <div class="link">
+                    <div class="txt">电视</div>
+                </div>
+                <div class="link">
+                    <div class="txt">笔记本</div>
+                </div>
+                <div class="link">
+                    <div class="txt">平板</div>
+                </div>
+                <div class="link">
+                    <div class="txt">家电</div>
+                </div>
+                <div class="link">
+                    <div class="txt">路由器</div>
+                </div>
+                <div class="link">
+                    <div class="txt">服务</div>
+                </div>
+                <div class="link">
+                    <div class="txt">社区</div>
+                </div>
+                <a href="#" class="header_sousuo">
+                    <div class="icon_sousuo iconfont icon-sousuo"></div>
+                </a>
+                <input type="search" class="sousuokuang">
+                <span class="sousuokuang_text">空调</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="lazyloader">
+        <div class="lazyloader_container">
+            <div class="category_list">
+                <a href="#" class="category_list_title">手机
+                    <span class="iconfont icon-youjiantou jiantou_youbianju"></span>
+                </a>
+                <a href="#" class="category_list_title">电视
+                    <span class="iconfont icon-youjiantou jiantou_youbianju"></span>
+                </a>
+                <a href="#" class="category_list_title">笔记本 平板
+                    <span class="iconfont icon-youjiantou jiantou_youbianju"></span>
+                </a>
+                <a href="#" class="category_list_title">家电
+                    <span class="iconfont icon-youjiantou jiantou_youbianju"></span>
+                </a>
+            </div>
+
+            <div class="category_list_rightshow">
+                <div class="lunbotu">
+
+                    <div class="lunbotuarrow">
+                        <span class="iconfont icon-youjiantou1"
+                            style="display: inline-block; font-size: 32px; margin: 19px 4px;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
